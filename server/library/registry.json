@@ -854,5 +854,286 @@
     ],
     "dependencies": [],
     "usage": "<ImageGallery images={[...]} />"
+  },
+  {
+    "id": "carousel-photo",
+    "name": "Carrousel photo",
+    "category": "media",
+    "file": "carousel-photo.tsx",
+    "description": "Carrousel plein format : flèches, points, défilement auto (pause au survol), swipe tactile, clavier, légendes.",
+    "tags": [
+      "carousel",
+      "carrousel",
+      "slider",
+      "diaporama",
+      "slideshow",
+      "photos",
+      "images",
+      "galerie"
+    ],
+    "dependencies": [],
+    "usage": "<CarouselPhoto slides={[{ src, alt, caption }]} interval={5000} />"
+  },
+  {
+    "id": "carousel-thumbnails",
+    "name": "Carrousel avec vignettes",
+    "category": "media",
+    "file": "carousel-thumbnails.tsx",
+    "description": "Grande image + rangée de vignettes cliquables (fiche produit, portfolio).",
+    "tags": [
+      "carousel",
+      "carrousel",
+      "vignettes",
+      "thumbnails",
+      "produit",
+      "galerie",
+      "photos"
+    ],
+    "dependencies": [],
+    "usage": "<CarouselThumbnails images={[...]} />"
+  },
+  {
+    "id": "testimonial-carousel",
+    "name": "Carrousel de témoignages",
+    "category": "social-proof",
+    "file": "testimonial-carousel.tsx",
+    "description": "Témoignages qui défilent automatiquement avec points de navigation.",
+    "tags": [
+      "carousel",
+      "carrousel",
+      "temoignages",
+      "testimonials",
+      "avis",
+      "slider"
+    ],
+    "dependencies": [],
+    "usage": "<TestimonialCarousel items={[...]} />"
+  },
+  {
+    "id": "calendar-month",
+    "name": "Calendrier mensuel",
+    "category": "calendar",
+    "file": "calendar-month.tsx",
+    "description": "Calendrier du mois avec événements colorés, navigation et sélection d'un jour (semaine du lundi).",
+    "tags": [
+      "calendrier",
+      "calendar",
+      "agenda",
+      "evenements",
+      "planning",
+      "mois"
+    ],
+    "dependencies": [],
+    "usage": "<CalendarMonth events={[{ date: \"2026-11-20\", title: \"Rdv\", color: \"green\" }]} />"
+  },
+  {
+    "id": "date-picker",
+    "name": "Sélecteur de date",
+    "category": "calendar",
+    "file": "date-picker.tsx",
+    "description": "Champ de date avec calendrier déroulant en français ; dates passées désactivables.",
+    "tags": [
+      "date",
+      "datepicker",
+      "selecteur",
+      "calendrier",
+      "reservation",
+      "formulaire"
+    ],
+    "dependencies": [],
+    "usage": "<DatePicker onChange={(d) => …} />"
+  },
+  {
+    "id": "booking-time-slots",
+    "name": "Réservation de créneau",
+    "category": "calendar",
+    "file": "booking-time-slots.tsx",
+    "description": "Prise de rendez-vous : choix du jour puis d'un créneau horaire, avec confirmation.",
+    "tags": [
+      "reservation",
+      "rendez-vous",
+      "booking",
+      "creneaux",
+      "agenda",
+      "calendly",
+      "horaires"
+    ],
+    "dependencies": [],
+    "usage": "<BookingTimeSlots onConfirm={({ date, time }) => …} />"
+  },
+  {
+    "id": "checkout-page",
+    "name": "Page de paiement",
+    "category": "ecommerce",
+    "file": "checkout-page.tsx",
+    "description": "Checkout complet : coordonnées, livraison, carte/PayPal/Apple Pay, code promo, récapitulatif et TVA. Maquette : brancher Stripe Elements en production.",
+    "tags": [
+      "paiement",
+      "checkout",
+      "payment",
+      "commande",
+      "carte bancaire",
+      "panier",
+      "stripe",
+      "ecommerce"
+    ],
+    "dependencies": [],
+    "usage": "<CheckoutPage items={[...]} onPay={(data) => …} />"
+  },
+  {
+    "id": "cart-drawer",
+    "name": "Panier latéral",
+    "category": "ecommerce",
+    "file": "cart-drawer.tsx",
+    "description": "Panier coulissant : quantités, suppression, jauge de livraison offerte, bouton commander.",
+    "tags": [
+      "panier",
+      "cart",
+      "drawer",
+      "ecommerce",
+      "boutique",
+      "commande"
+    ],
+    "dependencies": [],
+    "usage": "<CartDrawer open={open} onClose={() => setOpen(false)} />"
+  },
+  {
+    "id": "order-confirmation",
+    "name": "Confirmation de commande",
+    "category": "ecommerce",
+    "file": "order-confirmation.tsx",
+    "description": "Page « Merci pour votre commande » avec n° de commande, suivi et détail.",
+    "tags": [
+      "confirmation",
+      "commande",
+      "merci",
+      "order",
+      "ecommerce",
+      "paiement",
+      "succes"
+    ],
+    "dependencies": [],
+    "usage": "<OrderConfirmation orderNumber=\"CMD-123\" />"
+  },
+  {
+    "id": "footer-newsletter",
+    "name": "Bas de page avec newsletter",
+    "category": "footer",
+    "file": "footer-newsletter.tsx",
+    "description": "Footer sombre : inscription newsletter, 3 colonnes de liens, réseaux sociaux.",
+    "tags": [
+      "footer",
+      "bas de page",
+      "pied de page",
+      "newsletter",
+      "reseaux sociaux",
+      "social"
+    ],
+    "dependencies": [],
+    "usage": "<FooterNewsletter brand=\"Ma marque\" />"
+  },
+  {
+    "id": "footer-minimal",
+    "name": "Bas de page minimal",
+    "category": "footer",
+    "file": "footer-minimal.tsx",
+    "description": "Footer sur une ligne : copyright et liens légaux.",
+    "tags": [
+      "footer",
+      "bas de page",
+      "pied de page",
+      "minimal",
+      "simple",
+      "mentions legales"
+    ],
+    "dependencies": [],
+    "usage": "<FooterMinimal brand=\"Ma marque\" />"
+  },
+  {
+    "id": "footer-mega",
+    "name": "Grand bas de page e-commerce",
+    "category": "footer",
+    "file": "footer-mega.tsx",
+    "description": "Footer complet : bandeau de réassurance, 4 colonnes, langue/devise, moyens de paiement.",
+    "tags": [
+      "footer",
+      "bas de page",
+      "pied de page",
+      "ecommerce",
+      "boutique",
+      "reassurance",
+      "paiement"
+    ],
+    "dependencies": [],
+    "usage": "<FooterMega brand=\"Ma boutique\" />"
+  },
+  {
+    "id": "multi-step-form",
+    "name": "Formulaire en plusieurs étapes",
+    "category": "forms",
+    "file": "multi-step-form.tsx",
+    "description": "Demande de devis en 3 étapes avec choix en cartes et barre de progression.",
+    "tags": [
+      "formulaire",
+      "multi-step",
+      "etapes",
+      "wizard",
+      "devis",
+      "stepper"
+    ],
+    "dependencies": [],
+    "usage": "<MultiStepForm onSubmit={(data) => …} />"
+  },
+  {
+    "id": "rating-stars",
+    "name": "Notation par étoiles",
+    "category": "forms",
+    "file": "rating-stars.tsx",
+    "description": "Saisie d'une note de 1 à 5 étoiles, accessible au clavier.",
+    "tags": [
+      "etoiles",
+      "note",
+      "rating",
+      "avis",
+      "review",
+      "stars"
+    ],
+    "dependencies": [],
+    "usage": "<RatingStars onChange={(n) => …} />"
+  },
+  {
+    "id": "video-section",
+    "name": "Section vidéo",
+    "category": "media",
+    "file": "video-section.tsx",
+    "description": "Vignette avec bouton lecture qui charge YouTube (sans cookies) au clic.",
+    "tags": [
+      "video",
+      "youtube",
+      "demo",
+      "lecteur",
+      "player",
+      "media"
+    ],
+    "dependencies": [],
+    "usage": "<VideoSection youtubeId=\"…\" />"
+  },
+  {
+    "id": "location-map",
+    "name": "Carte et adresse",
+    "category": "content",
+    "file": "location-map.tsx",
+    "description": "Bloc « Nous trouver » : carte OpenStreetMap sans clé API, adresse, horaires, itinéraire.",
+    "tags": [
+      "carte",
+      "map",
+      "adresse",
+      "plan",
+      "horaires",
+      "contact",
+      "localisation"
+    ],
+    "dependencies": [],
+    "usage": "<LocationMap lat={48.86} lng={2.33} address=\"…\" />"
   }
 ]

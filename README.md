@@ -16,7 +16,7 @@ Vous demandez à Claude « ajoute un tableau de prix à ma landing page » : il 
 
 Le plugin ajoute aussi deux skills : `ui-explore` (explorer) et `ui-build` (construire).
 
-**52 composants** dans 16 catégories : hero (3), navigation (5), tarifs (3), fonctionnalités (3), preuve sociale (5), formulaires (7), overlays (5 : modale, menu, tooltip, cookies, palette Ctrl+K), feedback (5 : toasts, alertes, squelettes, progression, état vide), données (tableau triable, KPI), e-commerce, contenu (blog, timeline, galerie), équipe, pages (404), FAQ, CTA, footer, primitives (bouton, badge, avatars, texte dégradé).
+**68 composants** : hero (3), navigation (5), tarifs (3), fonctionnalités (3), preuve sociale (6), formulaires (9), médias (3 : carrousel photo, carrousel à vignettes, vidéo), calendrier (3 : calendrier mensuel, sélecteur de date, réservation de créneau), e-commerce (4 : page de paiement, panier latéral, confirmation de commande, carte produit), bas de page (4), overlays (5), feedback (5), données (2), contenu (4, dont carte OpenStreetMap), équipe, pages (404), FAQ, CTA, primitives (4).
 
 La bibliothèque est lue **en direct depuis GitHub** : tout composant ajouté au dépôt est disponible dans Claude sans réinstaller (cache local en cas de coupure, copie embarquée en dernier recours).
 
