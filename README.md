@@ -40,7 +40,7 @@ Redémarrez Claude Code, puis tapez `/mcp` : `elementsitecreator` doit apparaît
 Alternative sans plugin (serveur seul) :
 
 ```bash
-claude mcp add elementsitecreator -- npx -y https://github.com/Juan-Kand/elementscreatorsite/archive/refs/tags/v1.1.0.tar.gz
+claude mcp add elementsitecreator -- npx -y https://github.com/Juan-Kand/elementscreatorsite/archive/1eb069c46393d432146c58ad71217d37c62c5eb1.tar.gz
 ```
 
 ### Claude Desktop
@@ -53,7 +53,7 @@ claude mcp add elementsitecreator -- npx -y https://github.com/Juan-Kand/element
   "mcpServers": {
     "elementsitecreator": {
       "command": "npx",
-      "args": ["-y", "https://github.com/Juan-Kand/elementscreatorsite/archive/refs/tags/v1.1.0.tar.gz"]
+      "args": ["-y", "https://github.com/Juan-Kand/elementscreatorsite/archive/1eb069c46393d432146c58ad71217d37c62c5eb1.tar.gz"]
     }
   }
 }
