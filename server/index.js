@@ -20,6 +20,15 @@ const USER_DIR =
   process.env.ELEMENTSITECREATOR_HOME ||
   path.join(os.homedir(), ".elementsitecreator");
 const USER_COMPONENTS_DIR = path.join(USER_DIR, "components");
+const CACHE_DIR = path.join(USER_DIR, "cache");
+
+// Bibliothèque en ligne : chaque composant ajouté au dépôt GitHub devient
+// disponible sans réinstaller. Mettre ELEMENTSITECREATOR_REMOTE=off pour désactiver.
+const DEFAULT_REMOTE =
+  "https://raw.githubusercontent.com/Juan-Kand/elementscreatorsite/main/server/library";
+const REMOTE_ENV = process.env.ELEMENTSITECREATOR_REMOTE;
+const REMOTE_BASE = REMOTE_ENV === "off" ? null : (REMOTE_ENV || DEFAULT_REMOTE).replace(/\/$/, "");
+const REMOTE_TTL_MS = 10 * 60 * 1000;
 
 // ---------------------------------------------------------------------------
 // Bibliothèque
@@ -33,10 +42,65 @@ function readJSON(file, fallback) {
   }
 }
 
+function writeCache(name, content) {
+  try {
+    const file = path.join(CACHE_DIR, name);
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, content, "utf8");
+  } catch {
+    /* le cache est facultatif */
+  }
+}
+
+let remoteRegistry = REMOTE_BASE ? readJSON(path.join(CACHE_DIR, "registry.json"), null) : null;
+let remoteFetchedAt = 0;
+
+async function fetchText(url) {
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), 6000);
+  try {
+    const res = await fetch(url, { signal: ctl.signal });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.text();
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+let remoteInflight = null;
+
+function refreshRemote() {
+  if (!REMOTE_BASE || typeof fetch !== "function") return Promise.resolve();
+  if (remoteInflight) return remoteInflight;
+  if (Date.now() - remoteFetchedAt < REMOTE_TTL_MS) return Promise.resolve();
+  remoteInflight = (async () => {
+    try {
+      const txt = await fetchText(`${REMOTE_BASE}/registry.json`);
+      const reg = JSON.parse(txt);
+      if (Array.isArray(reg)) {
+        remoteRegistry = reg;
+        writeCache("registry.json", txt);
+      }
+    } catch {
+      /* hors ligne : on garde le cache ou la version embarquée */
+    } finally {
+      remoteFetchedAt = Date.now();
+      remoteInflight = null;
+    }
+  })();
+  return remoteInflight;
+}
+
 function loadLibrary() {
   const builtin = readJSON(path.join(LIB_DIR, "registry.json"), []).map((c) => ({
     ...c,
     source: "builtin",
+    file: path.join(LIB_DIR, "components", c.file),
+  }));
+  const remote = (remoteRegistry || []).map((c) => ({
+    ...c,
+    source: "remote",
+    remoteFile: c.file,
     file: path.join(LIB_DIR, "components", c.file),
   }));
   const user = readJSON(path.join(USER_DIR, "registry.json"), []).map((c) => ({
@@ -44,10 +108,31 @@ function loadLibrary() {
     source: "user",
     file: path.join(USER_COMPONENTS_DIR, c.file),
   }));
-  // Les composants de l'utilisateur remplacent ceux du même id
+  // Priorité : perso > en ligne > embarqué
   const map = new Map();
-  for (const c of [...builtin, ...user]) map.set(c.id, c);
+  for (const c of [...builtin, ...remote, ...user]) map.set(c.id, c);
   return [...map.values()];
+}
+
+async function readComponentCode(c) {
+  if (c.source === "remote") {
+    try {
+      const code = await fetchText(`${REMOTE_BASE}/components/${encodeURIComponent(c.remoteFile)}`);
+      writeCache(path.join("components", c.remoteFile), code);
+      return code;
+    } catch {
+      try {
+        return fs.readFileSync(path.join(CACHE_DIR, "components", c.remoteFile), "utf8");
+      } catch {
+        /* on tente la copie embarquée ci-dessous */
+      }
+    }
+  }
+  try {
+    return fs.readFileSync(c.file, "utf8");
+  } catch {
+    return "// Fichier introuvable : " + (c.remoteFile || c.file);
+  }
 }
 
 function normalize(s) {
@@ -97,15 +182,10 @@ function summary(c) {
   };
 }
 
-function getComponent(id) {
+async function getComponent(id) {
   const c = loadLibrary().find((x) => x.id === id);
   if (!c) return null;
-  let code = "";
-  try {
-    code = fs.readFileSync(c.file, "utf8");
-  } catch {
-    code = "// Fichier introuvable : " + c.file;
-  }
+  const code = await readComponentCode(c);
   return { ...summary(c), dependencies: c.dependencies || [], usage: c.usage || "", code };
 }
 
@@ -213,7 +293,8 @@ function text(t) {
   return { content: [{ type: "text", text: t }] };
 }
 
-function callTool(name, args = {}) {
+async function callTool(name, args = {}) {
+  await refreshRemote();
   switch (name) {
     case "search_components": {
       const res = search(args.query, args);
@@ -224,7 +305,7 @@ function callTool(name, args = {}) {
       return text(JSON.stringify(res.map(summary), null, 2));
     }
     case "get_component": {
-      const c = getComponent(args.id);
+      const c = await getComponent(args.id);
       if (!c) return { ...text(`Composant « ${args.id} » introuvable. Lance search_components.`), isError: true };
       const deps = c.dependencies.length ? c.dependencies.join(" ") : "aucune";
       return text(
@@ -238,7 +319,7 @@ function callTool(name, args = {}) {
     }
     case "generate_component": {
       const n = Math.max(1, Math.min(3, Number(args.variants) || 1));
-      const refs = search(args.description, { limit: 2 }).map((c) => getComponent(c.id));
+      const refs = await Promise.all(search(args.description, { limit: 2 }).map((c) => getComponent(c.id)));
       const refText = refs.length
         ? refs.map((r) => `## Référence : ${r.name} (${r.id})\n\`\`\`tsx\n${r.code}\n\`\`\``).join("\n\n")
         : "Aucune référence proche dans la bibliothèque.";
@@ -263,7 +344,7 @@ function send(msg) {
   process.stdout.write(JSON.stringify(msg) + "\n");
 }
 
-function handle(msg) {
+async function handle(msg) {
   const { id, method, params } = msg;
   const isRequest = id !== undefined && id !== null;
   try {
@@ -285,7 +366,7 @@ function handle(msg) {
         result = { tools: TOOLS };
         break;
       case "tools/call":
-        result = callTool(params.name, params.arguments || {});
+        result = await callTool(params.name, params.arguments || {});
         break;
       case "resources/list":
         result = { resources: [] };
@@ -306,6 +387,7 @@ function handle(msg) {
   }
 }
 
+const pending = new Set();
 const rl = readline.createInterface({ input: process.stdin });
 rl.on("line", (line) => {
   if (!line.trim()) return;
@@ -315,7 +397,14 @@ rl.on("line", (line) => {
   } catch {
     return send({ jsonrpc: "2.0", id: null, error: { code: -32700, message: "JSON invalide" } });
   }
-  if (Array.isArray(msg)) msg.forEach(handle);
-  else handle(msg);
+  for (const m of Array.isArray(msg) ? msg : [msg]) {
+    const p = handle(m).finally(() => pending.delete(p));
+    pending.add(p);
+  }
 });
-rl.on("close", () => process.exit(0));
+// Termine les requêtes en cours avant de quitter
+rl.on("close", async () => {
+  await Promise.allSettled([...pending]);
+  process.exit(0);
+});
+refreshRemote(); // préchargement au démarrage

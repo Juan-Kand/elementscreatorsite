@@ -16,7 +16,9 @@ Vous demandez à Claude « ajoute un tableau de prix à ma landing page » : il 
 
 Le plugin ajoute aussi deux skills : `ui-explore` (explorer) et `ui-build` (construire).
 
-Composants inclus : hero, navbar, pricing, feature grid, bento grid, témoignages, stats, FAQ, CTA, login, newsletter, footer, bouton.
+**52 composants** dans 16 catégories : hero (3), navigation (5), tarifs (3), fonctionnalités (3), preuve sociale (5), formulaires (7), overlays (5 : modale, menu, tooltip, cookies, palette Ctrl+K), feedback (5 : toasts, alertes, squelettes, progression, état vide), données (tableau triable, KPI), e-commerce, contenu (blog, timeline, galerie), équipe, pages (404), FAQ, CTA, footer, primitives (bouton, badge, avatars, texte dégradé).
+
+La bibliothèque est lue **en direct depuis GitHub** : tout composant ajouté au dépôt est disponible dans Claude sans réinstaller (cache local en cas de coupure, copie embarquée en dernier recours).
 
 **Aucune dépendance** : il suffit de Node.js 18 ou plus.
 
@@ -38,7 +40,7 @@ Redémarrez Claude Code, puis tapez `/mcp` : `elementsitecreator` doit apparaît
 Alternative sans plugin (serveur seul) :
 
 ```bash
-claude mcp add elementsitecreator -- npx -y https://github.com/Juan-Kand/elementscreatorsite/archive/refs/heads/main.tar.gz
+claude mcp add elementsitecreator -- npx -y https://github.com/Juan-Kand/elementscreatorsite/archive/refs/tags/v1.1.0.tar.gz
 ```
 
 ### Claude Desktop
@@ -51,7 +53,7 @@ claude mcp add elementsitecreator -- npx -y https://github.com/Juan-Kand/element
   "mcpServers": {
     "elementsitecreator": {
       "command": "npx",
-      "args": ["-y", "https://github.com/Juan-Kand/elementscreatorsite/archive/refs/heads/main.tar.gz"]
+      "args": ["-y", "https://github.com/Juan-Kand/elementscreatorsite/archive/refs/tags/v1.1.0.tar.gz"]
     }
   }
 }
@@ -84,7 +86,13 @@ Pré-requis du projet cible : React 18+ et Tailwind CSS 3+.
 
 1. Déposez le fichier dans `server/library/components/mon-composant.tsx`.
 2. Ajoutez une entrée dans `server/library/registry.json` (`id`, `name`, `category`, `file`, `description`, `tags`).
-3. Lancez `npm test` pour vérifier.
+3. Lancez `npm test` pour vérifier, puis poussez sur GitHub.
+
+Le composant apparaît dans Claude dans les 10 minutes (le temps du cache), sans rien réinstaller.
+
+Variables d'environnement utiles :
+- `ELEMENTSITECREATOR_REMOTE=off` : n'utiliser que la copie embarquée.
+- `ELEMENTSITECREATOR_REMOTE=<url>` : lire la bibliothèque depuis un autre dépôt.
 
 ## Développement
 

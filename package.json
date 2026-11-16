@@ -1,6 +1,6 @@
 {
   "name": "elementsitecreator",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Serveur MCP de bibliothèque de composants UI (React + Tailwind) pour Claude, inspiré de 21st.dev/mcp.",
   "license": "MIT",
   "bin": { "elementsitecreator": "server/index.js" },

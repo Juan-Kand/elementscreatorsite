@@ -6,7 +6,7 @@ const fs = require("fs");
 
 const home = fs.mkdtempSync(path.join(os.tmpdir(), "esc-"));
 const srv = spawn("node", [path.join(__dirname, "..", "server", "index.js")], {
-  env: { ...process.env, ELEMENTSITECREATOR_HOME: home },
+  env: { ...process.env, ELEMENTSITECREATOR_HOME: home, ELEMENTSITECREATOR_REMOTE: process.env.ELEMENTSITECREATOR_REMOTE || "off" },
 });
 const msgs = [
   { jsonrpc: "2.0", id: 1, method: "initialize", params: { protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "test", version: "0" } } },
@@ -34,7 +34,7 @@ setTimeout(() => {
   ok(byId[5].result.content[0].text.includes("ma-carte"), "publish_component");
   ok(byId[6].result.content[0].text.includes("ma-carte"), "composant publié retrouvable");
   ok(byId[7].result.content[0].text.includes("hero-gradient"), "generate_component donne des références");
-  ok(JSON.parse(byId[8].result.content[0].text).forms === 2, "list_categories");
+  ok(Object.values(JSON.parse(byId[8].result.content[0].text)).reduce((a, b) => a + b, 0) >= 50, "list_categories (50+ composants)");
   ok(lines.length === 8, "aucune réponse aux notifications");
   console.log("Tous les tests passent.");
 }, 800);

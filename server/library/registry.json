@@ -1,15 +1,858 @@
 [
-  { "id": "hero-gradient", "name": "Hero avec dégradé", "category": "hero", "file": "hero-gradient.tsx", "description": "Section hero centrée avec badge, titre, sous-titre, deux boutons et halo dégradé.", "tags": ["hero", "landing", "header", "gradient", "accueil"], "dependencies": [], "usage": "<HeroGradient title=\"…\" />" },
-  { "id": "navbar-simple", "name": "Navbar responsive", "category": "navigation", "file": "navbar-simple.tsx", "description": "Barre de navigation sticky avec liens, bouton CTA et menu burger mobile.", "tags": ["navbar", "menu", "header", "navigation", "burger"], "dependencies": [], "usage": "<NavbarSimple brand=\"Ma marque\" />" },
-  { "id": "pricing-three-tiers", "name": "Tableau de prix 3 offres", "category": "pricing", "file": "pricing-three-tiers.tsx", "description": "Trois cartes de tarifs, offre mise en avant, liste de fonctionnalités.", "tags": ["pricing", "tarifs", "prix", "abonnement", "plans", "table"], "dependencies": [], "usage": "<PricingThreeTiers tiers={[...]} />" },
-  { "id": "feature-grid", "name": "Grille de fonctionnalités", "category": "features", "file": "feature-grid.tsx", "description": "Grille de 6 cartes icône + titre + texte avec effet au survol.", "tags": ["features", "fonctionnalites", "grid", "avantages", "cards"], "dependencies": [], "usage": "<FeatureGrid features={[...]} />" },
-  { "id": "bento-grid", "name": "Bento grid", "category": "features", "file": "bento-grid.tsx", "description": "Grille bento asymétrique avec cartes de tailles variées et halos.", "tags": ["bento", "grid", "features", "showcase"], "dependencies": [], "usage": "<BentoGrid items={[...]} />" },
-  { "id": "testimonials-cards", "name": "Témoignages en cartes", "category": "social-proof", "file": "testimonials-cards.tsx", "description": "Trois cartes de témoignages clients avec avatar initiales.", "tags": ["testimonials", "temoignages", "avis", "reviews", "social proof"], "dependencies": [], "usage": "<TestimonialsCards items={[...]} />" },
-  { "id": "faq-accordion", "name": "FAQ accordéon", "category": "faq", "file": "faq-accordion.tsx", "description": "FAQ en accordéon natif <details>, accessible, sans JavaScript.", "tags": ["faq", "accordion", "accordeon", "questions"], "dependencies": [], "usage": "<FaqAccordion items={[...]} />" },
-  { "id": "cta-banner", "name": "Bannière d'appel à l'action", "category": "cta", "file": "cta-banner.tsx", "description": "Bandeau dégradé avec titre, sous-titre et bouton.", "tags": ["cta", "call to action", "banner", "banniere", "conversion"], "dependencies": [], "usage": "<CtaBanner />" },
-  { "id": "stats-row", "name": "Ligne de statistiques", "category": "social-proof", "file": "stats-row.tsx", "description": "Quatre chiffres clés avec libellés (liste de définitions sémantique).", "tags": ["stats", "statistiques", "chiffres", "metrics", "kpi"], "dependencies": [], "usage": "<StatsRow stats={[...]} />" },
-  { "id": "login-form", "name": "Formulaire de connexion", "category": "forms", "file": "login-form.tsx", "description": "Carte de connexion e-mail / mot de passe avec labels et focus accessibles.", "tags": ["login", "connexion", "form", "formulaire", "auth", "sign in"], "dependencies": [], "usage": "<LoginForm onSubmit={(d) => …} />" },
-  { "id": "newsletter-signup", "name": "Inscription newsletter", "category": "forms", "file": "newsletter-signup.tsx", "description": "Bloc d'inscription à la newsletter avec message de confirmation.", "tags": ["newsletter", "email", "form", "inscription", "subscribe"], "dependencies": [], "usage": "<NewsletterSignup onSubscribe={(email) => …} />" },
-  { "id": "footer-columns", "name": "Footer en colonnes", "category": "footer", "file": "footer-columns.tsx", "description": "Pied de page avec marque et trois colonnes de liens.", "tags": ["footer", "pied de page", "liens", "links"], "dependencies": [], "usage": "<FooterColumns brand=\"…\" />" },
-  { "id": "button-variants", "name": "Bouton (variantes)", "category": "primitives", "file": "button-variants.tsx", "description": "Bouton réutilisable : 5 variantes, 3 tailles, état de chargement.", "tags": ["button", "bouton", "primitive", "ui", "loading"], "dependencies": [], "usage": "<Button variant=\"outline\" size=\"lg\">OK</Button>" }
+  {
+    "id": "hero-gradient",
+    "name": "Hero avec dégradé",
+    "category": "hero",
+    "file": "hero-gradient.tsx",
+    "description": "Section hero centrée avec badge, titre, sous-titre, deux boutons et halo dégradé.",
+    "tags": [
+      "hero",
+      "landing",
+      "header",
+      "gradient",
+      "accueil"
+    ],
+    "dependencies": [],
+    "usage": "<HeroGradient title=\"…\" />"
+  },
+  {
+    "id": "navbar-simple",
+    "name": "Navbar responsive",
+    "category": "navigation",
+    "file": "navbar-simple.tsx",
+    "description": "Barre de navigation sticky avec liens, bouton CTA et menu burger mobile.",
+    "tags": [
+      "navbar",
+      "menu",
+      "header",
+      "navigation",
+      "burger"
+    ],
+    "dependencies": [],
+    "usage": "<NavbarSimple brand=\"Ma marque\" />"
+  },
+  {
+    "id": "pricing-three-tiers",
+    "name": "Tableau de prix 3 offres",
+    "category": "pricing",
+    "file": "pricing-three-tiers.tsx",
+    "description": "Trois cartes de tarifs, offre mise en avant, liste de fonctionnalités.",
+    "tags": [
+      "pricing",
+      "tarifs",
+      "prix",
+      "abonnement",
+      "plans",
+      "table"
+    ],
+    "dependencies": [],
+    "usage": "<PricingThreeTiers tiers={[...]} />"
+  },
+  {
+    "id": "feature-grid",
+    "name": "Grille de fonctionnalités",
+    "category": "features",
+    "file": "feature-grid.tsx",
+    "description": "Grille de 6 cartes icône + titre + texte avec effet au survol.",
+    "tags": [
+      "features",
+      "fonctionnalites",
+      "grid",
+      "avantages",
+      "cards"
+    ],
+    "dependencies": [],
+    "usage": "<FeatureGrid features={[...]} />"
+  },
+  {
+    "id": "bento-grid",
+    "name": "Bento grid",
+    "category": "features",
+    "file": "bento-grid.tsx",
+    "description": "Grille bento asymétrique avec cartes de tailles variées et halos.",
+    "tags": [
+      "bento",
+      "grid",
+      "features",
+      "showcase"
+    ],
+    "dependencies": [],
+    "usage": "<BentoGrid items={[...]} />"
+  },
+  {
+    "id": "testimonials-cards",
+    "name": "Témoignages en cartes",
+    "category": "social-proof",
+    "file": "testimonials-cards.tsx",
+    "description": "Trois cartes de témoignages clients avec avatar initiales.",
+    "tags": [
+      "testimonials",
+      "temoignages",
+      "avis",
+      "reviews",
+      "social proof"
+    ],
+    "dependencies": [],
+    "usage": "<TestimonialsCards items={[...]} />"
+  },
+  {
+    "id": "faq-accordion",
+    "name": "FAQ accordéon",
+    "category": "faq",
+    "file": "faq-accordion.tsx",
+    "description": "FAQ en accordéon natif <details>, accessible, sans JavaScript.",
+    "tags": [
+      "faq",
+      "accordion",
+      "accordeon",
+      "questions"
+    ],
+    "dependencies": [],
+    "usage": "<FaqAccordion items={[...]} />"
+  },
+  {
+    "id": "cta-banner",
+    "name": "Bannière d'appel à l'action",
+    "category": "cta",
+    "file": "cta-banner.tsx",
+    "description": "Bandeau dégradé avec titre, sous-titre et bouton.",
+    "tags": [
+      "cta",
+      "call to action",
+      "banner",
+      "banniere",
+      "conversion"
+    ],
+    "dependencies": [],
+    "usage": "<CtaBanner />"
+  },
+  {
+    "id": "stats-row",
+    "name": "Ligne de statistiques",
+    "category": "social-proof",
+    "file": "stats-row.tsx",
+    "description": "Quatre chiffres clés avec libellés (liste de définitions sémantique).",
+    "tags": [
+      "stats",
+      "statistiques",
+      "chiffres",
+      "metrics",
+      "kpi"
+    ],
+    "dependencies": [],
+    "usage": "<StatsRow stats={[...]} />"
+  },
+  {
+    "id": "login-form",
+    "name": "Formulaire de connexion",
+    "category": "forms",
+    "file": "login-form.tsx",
+    "description": "Carte de connexion e-mail / mot de passe avec labels et focus accessibles.",
+    "tags": [
+      "login",
+      "connexion",
+      "form",
+      "formulaire",
+      "auth",
+      "sign in"
+    ],
+    "dependencies": [],
+    "usage": "<LoginForm onSubmit={(d) => …} />"
+  },
+  {
+    "id": "newsletter-signup",
+    "name": "Inscription newsletter",
+    "category": "forms",
+    "file": "newsletter-signup.tsx",
+    "description": "Bloc d'inscription à la newsletter avec message de confirmation.",
+    "tags": [
+      "newsletter",
+      "email",
+      "form",
+      "inscription",
+      "subscribe"
+    ],
+    "dependencies": [],
+    "usage": "<NewsletterSignup onSubscribe={(email) => …} />"
+  },
+  {
+    "id": "footer-columns",
+    "name": "Footer en colonnes",
+    "category": "footer",
+    "file": "footer-columns.tsx",
+    "description": "Pied de page avec marque et trois colonnes de liens.",
+    "tags": [
+      "footer",
+      "pied de page",
+      "liens",
+      "links"
+    ],
+    "dependencies": [],
+    "usage": "<FooterColumns brand=\"…\" />"
+  },
+  {
+    "id": "button-variants",
+    "name": "Bouton (variantes)",
+    "category": "primitives",
+    "file": "button-variants.tsx",
+    "description": "Bouton réutilisable : 5 variantes, 3 tailles, état de chargement.",
+    "tags": [
+      "button",
+      "bouton",
+      "primitive",
+      "ui",
+      "loading"
+    ],
+    "dependencies": [],
+    "usage": "<Button variant=\"outline\" size=\"lg\">OK</Button>"
+  },
+  {
+    "id": "hero-split-image",
+    "name": "Hero texte + image",
+    "category": "hero",
+    "file": "hero-split-image.tsx",
+    "description": "Hero en deux colonnes : texte et CTA à gauche, grande image avec halo à droite.",
+    "tags": [
+      "hero",
+      "split",
+      "image",
+      "landing",
+      "saas"
+    ],
+    "dependencies": [],
+    "usage": "<HeroSplitImage imageSrc=\"/hero.jpg\" />"
+  },
+  {
+    "id": "hero-minimal-dark",
+    "name": "Hero minimal sombre",
+    "category": "hero",
+    "file": "hero-minimal-dark.tsx",
+    "description": "Hero sombre avec grille de fond, titre en dégradé et commande à copier.",
+    "tags": [
+      "hero",
+      "dark",
+      "sombre",
+      "minimal",
+      "developpeur",
+      "terminal",
+      "grid"
+    ],
+    "dependencies": [],
+    "usage": "<HeroMinimalDark command=\"npx mon-outil\" />"
+  },
+  {
+    "id": "logo-cloud",
+    "name": "Nuage de logos",
+    "category": "social-proof",
+    "file": "logo-cloud.tsx",
+    "description": "Grille de logos clients en niveaux de gris.",
+    "tags": [
+      "logos",
+      "clients",
+      "partenaires",
+      "brands",
+      "trust"
+    ],
+    "dependencies": [],
+    "usage": "<LogoCloud logos={[...]} />"
+  },
+  {
+    "id": "logo-marquee",
+    "name": "Bandeau de logos défilant",
+    "category": "social-proof",
+    "file": "logo-marquee.tsx",
+    "description": "Défilement infini de logos avec fondu sur les bords (animation Tailwind à ajouter).",
+    "tags": [
+      "marquee",
+      "defilement",
+      "logos",
+      "carousel",
+      "animation",
+      "infini"
+    ],
+    "dependencies": [],
+    "usage": "<LogoMarquee items={[...]} />"
+  },
+  {
+    "id": "team-grid",
+    "name": "Grille d'équipe",
+    "category": "about",
+    "file": "team-grid.tsx",
+    "description": "Portraits de l'équipe avec nom et rôle.",
+    "tags": [
+      "team",
+      "equipe",
+      "about",
+      "a propos",
+      "membres"
+    ],
+    "dependencies": [],
+    "usage": "<TeamGrid members={[...]} />"
+  },
+  {
+    "id": "blog-card-grid",
+    "name": "Grille d'articles de blog",
+    "category": "content",
+    "file": "blog-card-grid.tsx",
+    "description": "Trois cartes d'articles avec image, tag, date et extrait ; carte entièrement cliquable.",
+    "tags": [
+      "blog",
+      "articles",
+      "posts",
+      "cards",
+      "actualites",
+      "news"
+    ],
+    "dependencies": [],
+    "usage": "<BlogCardGrid posts={[...]} />"
+  },
+  {
+    "id": "timeline-vertical",
+    "name": "Frise chronologique",
+    "category": "content",
+    "file": "timeline-vertical.tsx",
+    "description": "Timeline verticale avec dates, titres et descriptions.",
+    "tags": [
+      "timeline",
+      "chronologie",
+      "histoire",
+      "roadmap",
+      "etapes"
+    ],
+    "dependencies": [],
+    "usage": "<TimelineVertical events={[...]} />"
+  },
+  {
+    "id": "steps-process",
+    "name": "Étapes numérotées",
+    "category": "features",
+    "file": "steps-process.tsx",
+    "description": "Processus en 3 étapes numérotées reliées par une ligne.",
+    "tags": [
+      "steps",
+      "etapes",
+      "process",
+      "how it works",
+      "comment ca marche",
+      "onboarding"
+    ],
+    "dependencies": [],
+    "usage": "<StepsProcess steps={[...]} />"
+  },
+  {
+    "id": "pricing-toggle",
+    "name": "Tarifs mensuel / annuel",
+    "category": "pricing",
+    "file": "pricing-toggle.tsx",
+    "description": "Trois offres avec bascule mensuel/annuel accessible.",
+    "tags": [
+      "pricing",
+      "tarifs",
+      "toggle",
+      "annuel",
+      "mensuel",
+      "abonnement",
+      "switch"
+    ],
+    "dependencies": [],
+    "usage": "<PricingToggle plans={[...]} />"
+  },
+  {
+    "id": "comparison-table",
+    "name": "Tableau comparatif d'offres",
+    "category": "pricing",
+    "file": "comparison-table.tsx",
+    "description": "Tableau de comparaison des fonctionnalités par offre (✓ / —).",
+    "tags": [
+      "comparaison",
+      "comparison",
+      "table",
+      "tableau",
+      "features",
+      "offres"
+    ],
+    "dependencies": [],
+    "usage": "<ComparisonTable plans={[...]} rows={[...]} />"
+  },
+  {
+    "id": "contact-form",
+    "name": "Formulaire de contact",
+    "category": "forms",
+    "file": "contact-form.tsx",
+    "description": "Coordonnées + formulaire (nom, e-mail, sujet, message) avec confirmation.",
+    "tags": [
+      "contact",
+      "form",
+      "formulaire",
+      "message",
+      "devis"
+    ],
+    "dependencies": [],
+    "usage": "<ContactForm onSubmit={(data) => …} />"
+  },
+  {
+    "id": "testimonial-spotlight",
+    "name": "Témoignage mis en avant",
+    "category": "social-proof",
+    "file": "testimonial-spotlight.tsx",
+    "description": "Grande citation centrée sur fond sombre avec auteur.",
+    "tags": [
+      "testimonial",
+      "temoignage",
+      "citation",
+      "quote",
+      "avis"
+    ],
+    "dependencies": [],
+    "usage": "<TestimonialSpotlight quote=\"…\" />"
+  },
+  {
+    "id": "gradient-text-heading",
+    "name": "Titre en dégradé animé",
+    "category": "primitives",
+    "file": "gradient-text-heading.tsx",
+    "description": "Titre avec mot-clé en dégradé animé (animation Tailwind à ajouter).",
+    "tags": [
+      "gradient",
+      "degrade",
+      "titre",
+      "heading",
+      "texte",
+      "animation"
+    ],
+    "dependencies": [],
+    "usage": "<GradientTextHeading highlight=\"incroyables\" />"
+  },
+  {
+    "id": "badge",
+    "name": "Badge",
+    "category": "primitives",
+    "file": "badge.tsx",
+    "description": "Pastille de statut en 6 couleurs, avec point optionnel.",
+    "tags": [
+      "badge",
+      "tag",
+      "pastille",
+      "label",
+      "statut",
+      "chip"
+    ],
+    "dependencies": [],
+    "usage": "<Badge tone=\"green\" dot>En ligne</Badge>"
+  },
+  {
+    "id": "avatar-group",
+    "name": "Groupe d'avatars",
+    "category": "primitives",
+    "file": "avatar-group.tsx",
+    "description": "Avatars superposés avec compteur +N.",
+    "tags": [
+      "avatar",
+      "groupe",
+      "users",
+      "membres",
+      "stack"
+    ],
+    "dependencies": [],
+    "usage": "<AvatarGroup people={[...]} max={4} />"
+  },
+  {
+    "id": "toggle-switch",
+    "name": "Interrupteur",
+    "category": "forms",
+    "file": "toggle-switch.tsx",
+    "description": "Switch on/off accessible (role=switch) avec libellé et description.",
+    "tags": [
+      "toggle",
+      "switch",
+      "interrupteur",
+      "checkbox",
+      "reglages",
+      "settings"
+    ],
+    "dependencies": [],
+    "usage": "<ToggleSwitch onChange={(v) => …} />"
+  },
+  {
+    "id": "tabs",
+    "name": "Onglets",
+    "category": "navigation",
+    "file": "tabs.tsx",
+    "description": "Onglets accessibles (ARIA tabs) avec navigation aux flèches.",
+    "tags": [
+      "tabs",
+      "onglets",
+      "tablist",
+      "navigation"
+    ],
+    "dependencies": [],
+    "usage": "<Tabs tabs={[{ label: \"A\", content: <p/> }]} />"
+  },
+  {
+    "id": "tooltip",
+    "name": "Info-bulle",
+    "category": "overlays",
+    "file": "tooltip.tsx",
+    "description": "Info-bulle CSS au survol et au focus, en haut ou en bas.",
+    "tags": [
+      "tooltip",
+      "info-bulle",
+      "hover",
+      "aide",
+      "hint"
+    ],
+    "dependencies": [],
+    "usage": "<Tooltip text=\"Copier\"><button>…</button></Tooltip>"
+  },
+  {
+    "id": "search-input",
+    "name": "Champ de recherche",
+    "category": "forms",
+    "file": "search-input.tsx",
+    "description": "Champ de recherche avec icône et raccourci clavier affiché.",
+    "tags": [
+      "search",
+      "recherche",
+      "input",
+      "champ",
+      "barre"
+    ],
+    "dependencies": [],
+    "usage": "<SearchInput onSearch={(q) => …} />"
+  },
+  {
+    "id": "skeleton-loader",
+    "name": "Squelette de chargement",
+    "category": "feedback",
+    "file": "skeleton-loader.tsx",
+    "description": "Cartes squelettes animées pendant le chargement.",
+    "tags": [
+      "skeleton",
+      "loading",
+      "chargement",
+      "placeholder",
+      "loader"
+    ],
+    "dependencies": [],
+    "usage": "<SkeletonLoader count={3} />"
+  },
+  {
+    "id": "progress-bar",
+    "name": "Barre de progression",
+    "category": "feedback",
+    "file": "progress-bar.tsx",
+    "description": "Barre de progression accessible avec pourcentage.",
+    "tags": [
+      "progress",
+      "progression",
+      "barre",
+      "loading",
+      "pourcentage"
+    ],
+    "dependencies": [],
+    "usage": "<ProgressBar value={42} />"
+  },
+  {
+    "id": "modal-dialog",
+    "name": "Fenêtre modale",
+    "category": "overlays",
+    "file": "modal-dialog.tsx",
+    "description": "Modale de confirmation basée sur <dialog> natif (focus, Échap, clic extérieur).",
+    "tags": [
+      "modal",
+      "modale",
+      "dialog",
+      "popup",
+      "confirmation",
+      "fenetre"
+    ],
+    "dependencies": [],
+    "usage": "<ModalDialog open={open} onClose={() => setOpen(false)} />"
+  },
+  {
+    "id": "dropdown-menu",
+    "name": "Menu déroulant",
+    "category": "overlays",
+    "file": "dropdown-menu.tsx",
+    "description": "Menu d'actions accessible : flèches, Échap, clic extérieur.",
+    "tags": [
+      "dropdown",
+      "menu",
+      "deroulant",
+      "actions",
+      "options",
+      "select"
+    ],
+    "dependencies": [],
+    "usage": "<DropdownMenu items={[{ label: \"Modifier\" }]} />"
+  },
+  {
+    "id": "toast-notification",
+    "name": "Notifications toast",
+    "category": "feedback",
+    "file": "toast-notification.tsx",
+    "description": "Système de toasts (provider + hook useToast) avec 3 tons.",
+    "tags": [
+      "toast",
+      "notification",
+      "snackbar",
+      "alerte",
+      "message"
+    ],
+    "dependencies": [],
+    "usage": "<ToastProvider><App /></ToastProvider> puis useToast()({ title: \"OK\", tone: \"success\" })"
+  },
+  {
+    "id": "cookie-banner",
+    "name": "Bandeau cookies",
+    "category": "overlays",
+    "file": "cookie-banner.tsx",
+    "description": "Bandeau de consentement cookies mémorisé dans localStorage.",
+    "tags": [
+      "cookies",
+      "rgpd",
+      "gdpr",
+      "consentement",
+      "banner",
+      "bandeau"
+    ],
+    "dependencies": [],
+    "usage": "<CookieBanner policyHref=\"/confidentialite\" />"
+  },
+  {
+    "id": "command-palette",
+    "name": "Palette de commandes",
+    "category": "overlays",
+    "file": "command-palette.tsx",
+    "description": "Palette Ctrl/Cmd+K avec recherche et navigation clavier.",
+    "tags": [
+      "command",
+      "palette",
+      "cmdk",
+      "recherche",
+      "raccourci",
+      "spotlight"
+    ],
+    "dependencies": [],
+    "usage": "<CommandPalette commands={[...]} />"
+  },
+  {
+    "id": "sidebar-nav",
+    "name": "Barre latérale",
+    "category": "navigation",
+    "file": "sidebar-nav.tsx",
+    "description": "Sidebar d'application avec icônes, badges et profil utilisateur.",
+    "tags": [
+      "sidebar",
+      "barre laterale",
+      "menu",
+      "dashboard",
+      "app",
+      "navigation"
+    ],
+    "dependencies": [],
+    "usage": "<SidebarNav activeLabel=\"Projets\" />"
+  },
+  {
+    "id": "breadcrumb",
+    "name": "Fil d'Ariane",
+    "category": "navigation",
+    "file": "breadcrumb.tsx",
+    "description": "Fil d'Ariane accessible avec page courante.",
+    "tags": [
+      "breadcrumb",
+      "fil d'ariane",
+      "navigation",
+      "chemin"
+    ],
+    "dependencies": [],
+    "usage": "<Breadcrumb items={[...]} />"
+  },
+  {
+    "id": "pagination",
+    "name": "Pagination",
+    "category": "navigation",
+    "file": "pagination.tsx",
+    "description": "Pagination avec ellipses, précédent/suivant.",
+    "tags": [
+      "pagination",
+      "pages",
+      "navigation",
+      "suivant"
+    ],
+    "dependencies": [],
+    "usage": "<Pagination page={p} total={20} onChange={setP} />"
+  },
+  {
+    "id": "data-table",
+    "name": "Tableau de données",
+    "category": "data",
+    "file": "data-table.tsx",
+    "description": "Tableau filtrable et triable avec badges de statut.",
+    "tags": [
+      "table",
+      "tableau",
+      "data",
+      "donnees",
+      "tri",
+      "filtre",
+      "admin",
+      "users"
+    ],
+    "dependencies": [],
+    "usage": "<DataTable rows={[...]} />"
+  },
+  {
+    "id": "dashboard-stat-cards",
+    "name": "Cartes KPI",
+    "category": "data",
+    "file": "dashboard-stat-cards.tsx",
+    "description": "Quatre cartes d'indicateurs avec variation et mini-graphique.",
+    "tags": [
+      "dashboard",
+      "kpi",
+      "stats",
+      "statistiques",
+      "sparkline",
+      "metrics",
+      "cards"
+    ],
+    "dependencies": [],
+    "usage": "<DashboardStatCards kpis={[...]} />"
+  },
+  {
+    "id": "product-card",
+    "name": "Carte produit",
+    "category": "ecommerce",
+    "file": "product-card.tsx",
+    "description": "Carte produit e-commerce : image, promo, note, prix et ajout au panier.",
+    "tags": [
+      "product",
+      "produit",
+      "ecommerce",
+      "boutique",
+      "shop",
+      "card",
+      "panier"
+    ],
+    "dependencies": [],
+    "usage": "<ProductCard product={{...}} onAdd={() => …} />"
+  },
+  {
+    "id": "not-found-404",
+    "name": "Page 404",
+    "category": "pages",
+    "file": "not-found-404.tsx",
+    "description": "Page d'erreur 404 avec gros chiffre en dégradé et liens de retour.",
+    "tags": [
+      "404",
+      "erreur",
+      "not found",
+      "page",
+      "introuvable"
+    ],
+    "dependencies": [],
+    "usage": "<NotFound404 />"
+  },
+  {
+    "id": "signup-form",
+    "name": "Formulaire d'inscription",
+    "category": "forms",
+    "file": "signup-form.tsx",
+    "description": "Inscription avec indicateur de robustesse du mot de passe.",
+    "tags": [
+      "signup",
+      "inscription",
+      "register",
+      "form",
+      "mot de passe",
+      "auth"
+    ],
+    "dependencies": [],
+    "usage": "<SignupForm onSubmit={(d) => …} />"
+  },
+  {
+    "id": "file-upload-dropzone",
+    "name": "Zone d'upload",
+    "category": "forms",
+    "file": "file-upload-dropzone.tsx",
+    "description": "Glisser-déposer de fichiers avec liste et limite de taille.",
+    "tags": [
+      "upload",
+      "fichier",
+      "dropzone",
+      "drag",
+      "drop",
+      "televerser"
+    ],
+    "dependencies": [],
+    "usage": "<FileUploadDropzone onFiles={(f) => …} />"
+  },
+  {
+    "id": "empty-state",
+    "name": "État vide",
+    "category": "feedback",
+    "file": "empty-state.tsx",
+    "description": "Message d'état vide avec icône et bouton d'action.",
+    "tags": [
+      "empty",
+      "vide",
+      "placeholder",
+      "aucun",
+      "zero state"
+    ],
+    "dependencies": [],
+    "usage": "<EmptyState onAction={() => …} />"
+  },
+  {
+    "id": "alert-banner",
+    "name": "Alerte",
+    "category": "feedback",
+    "file": "alert-banner.tsx",
+    "description": "Bandeau d'alerte en 4 tons (info, succès, avertissement, erreur), fermable.",
+    "tags": [
+      "alert",
+      "alerte",
+      "banner",
+      "message",
+      "erreur",
+      "warning",
+      "succes"
+    ],
+    "dependencies": [],
+    "usage": "<AlertBanner tone=\"warning\" title=\"…\" />"
+  },
+  {
+    "id": "countdown-timer",
+    "name": "Compte à rebours",
+    "category": "marketing",
+    "file": "countdown-timer.tsx",
+    "description": "Compte à rebours jours/heures/minutes/secondes.",
+    "tags": [
+      "countdown",
+      "compte a rebours",
+      "timer",
+      "lancement",
+      "promo"
+    ],
+    "dependencies": [],
+    "usage": "<CountdownTimer target=\"2026-12-24T00:00:00\" />"
+  },
+  {
+    "id": "image-gallery",
+    "name": "Galerie d'images",
+    "category": "content",
+    "file": "image-gallery.tsx",
+    "description": "Grille de photos avec visionneuse plein écran au clavier.",
+    "tags": [
+      "gallery",
+      "galerie",
+      "images",
+      "photos",
+      "lightbox",
+      "visionneuse"
+    ],
+    "dependencies": [],
+    "usage": "<ImageGallery images={[...]} />"
+  }
 ]
