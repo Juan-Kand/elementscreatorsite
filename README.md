@@ -38,7 +38,7 @@ Redémarrez Claude Code, puis tapez `/mcp` : `elementsitecreator` doit apparaît
 Alternative sans plugin (serveur seul) :
 
 ```bash
-claude mcp add elementsitecreator -- npx -y github:Juan-Kand/elementscreatorsite
+claude mcp add elementsitecreator -- npx -y https://github.com/Juan-Kand/elementscreatorsite/archive/refs/heads/main.tar.gz
 ```
 
 ### Claude Desktop
@@ -51,7 +51,7 @@ claude mcp add elementsitecreator -- npx -y github:Juan-Kand/elementscreatorsite
   "mcpServers": {
     "elementsitecreator": {
       "command": "npx",
-      "args": ["-y", "github:Juan-Kand/elementscreatorsite"]
+      "args": ["-y", "https://github.com/Juan-Kand/elementscreatorsite/archive/refs/heads/main.tar.gz"]
     }
   }
 }
@@ -59,7 +59,7 @@ claude mcp add elementsitecreator -- npx -y github:Juan-Kand/elementscreatorsite
 
 3. Quittez complètement Claude Desktop et relancez-le. Les outils apparaissent dans le menu des outils de la conversation.
 
-> Si le dépôt est **privé**, `npx github:…` ne fonctionnera pas. Clonez-le et pointez sur le fichier local :
+> Cette méthode ne nécessite pas Git, seulement Node.js. Si le dépôt devient **privé**, elle ne fonctionnera plus. Clonez-le et pointez sur le fichier local :
 > ```json
 > { "mcpServers": { "elementsitecreator": { "command": "node", "args": ["C:/chemin/vers/elementsitecreator/server/index.js"] } } }
 > ```
