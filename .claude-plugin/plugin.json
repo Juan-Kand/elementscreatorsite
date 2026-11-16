@@ -1,0 +1,9 @@
+{
+  "name": "elementsitecreator",
+  "version": "1.0.0",
+  "description": "Bibliothèque de composants UI React + Tailwind via MCP : rechercher, récupérer, générer et enregistrer des composants.",
+  "author": { "name": "Juan-Kand" },
+  "repository": "https://github.com/Juan-Kand/elementscreatorsite",
+  "license": "MIT",
+  "keywords": ["ui", "components", "react", "tailwind", "mcp"]
+}

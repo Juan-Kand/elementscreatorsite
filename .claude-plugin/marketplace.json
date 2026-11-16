@@ -1,0 +1,11 @@
+{
+  "name": "elementsitecreator",
+  "owner": { "name": "Juan-Kand" },
+  "plugins": [
+    {
+      "name": "elementsitecreator",
+      "source": "./",
+      "description": "Bibliothèque de composants UI React + Tailwind via MCP (serveur + skills)."
+    }
+  ]
+}
